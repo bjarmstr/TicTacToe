@@ -1,8 +1,31 @@
 version: '3.4'
 
 services:
-  tictactoe.api:
+  mktfy.api:
     image: ${DOCKER_REGISTRY-}tictactoeapi
+    container_name: "tictactoe.api"
     build:
       context: .
       dockerfile: TicTacToe.Api/Dockerfile
+    ports:
+      - "34023:80"
+      - "34024:443"
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=tictactoe.db;Database=dev;User Id=dev;Password=dev
+    depends_on:
+      - tictactoe.db
+  tictactoe.db:
+    restart: on-failure
+    image: "postgis/postgis:13-3.1-alpine"
+    container_name: "tictactoe.db"
+    environment:
+      - POSTGRES_USER=devdbuser
+      - POSTGRES_DB=devdb
+      - POSTGRES_PASSWORD=devdbpassword
+    volumes:
+      - tictactoe-db:/var/lib/postgresql/data
+    ports:
+      - "35424:5432"
+   
+volumes:
+  mktfy-db:
