@@ -14,18 +14,19 @@ services:
       - ConnectionStrings__DefaultConnection=Server=tictactoe.db;Database=dev;User Id=dev;Password=dev
     depends_on:
       - tictactoe.db
+
   tictactoe.db:
     restart: on-failure
     image: "postgis/postgis:13-3.1-alpine"
     container_name: "tictactoe.db"
     environment:
-      - POSTGRES_USER=devdbuser
-      - POSTGRES_DB=devdb
-      - POSTGRES_PASSWORD=devdbpassword
+      - POSTGRES_USER=dev
+      - POSTGRES_DB=dev
+      - POSTGRES_PASSWORD=dev
     volumes:
       - tictactoe-db:/var/lib/postgresql/data
     ports:
       - "35424:5432"
    
 volumes:
-  mktfy-db:
+  tictactoe-db:

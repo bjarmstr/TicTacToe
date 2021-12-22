@@ -8,9 +8,6 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["TicTacToe.Api/TicTacToe.Api.csproj", "TicTacToe.Api/"]
-COPY ["TicTacToe.Services/TicTacToe.Services.csproj", "TicTacToe.Services/"]
-COPY ["TicTacToe.Repository/TicTacToe.Repositories.csproj", "TicTacToe.Repository/"]
-COPY ["TicTacToe.Models/TicTacToe.Models.csproj", "TicTacToe.Models/"]
 RUN dotnet restore "TicTacToe.Api/TicTacToe.Api.csproj"
 COPY . .
 WORKDIR "/src/TicTacToe.Api"
