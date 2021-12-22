@@ -4,4 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TicTacToe.Models\TicTacToe.Models.csproj" />
+    <ProjectReference Include="..\TicTacToe.Repository\TicTacToe.Repositories.csproj" />
+  </ItemGroup>
+
 </Project>

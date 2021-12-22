@@ -30,10 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\TicTacToe.Models\TicTacToe.Models.csproj" />
     <ProjectReference Include="..\TicTacToe.Repository\TicTacToe.Repositories.csproj" />
     <ProjectReference Include="..\TicTacToe.Services\TicTacToe.Services.csproj" />

@@ -38,5 +38,8 @@ namespace TicTacToe.Models.Entities
         /// </summary>
         public Guid? Winner { get;set;}
 
-       }
+        [Required]
+        public DateTime CreatedDate { get; set; }
+
+    }
 }
