@@ -24,18 +24,15 @@ namespace TicTacToe.Models.Entities
         public Guid Id { get; set; }
 
         public List<int> Gameboard { get; set; }
-        
-        public Player Player1 { get; set; }
 
-        [Required]
-        public Guid Player1Id { get; set; }
+        /// <summary>
+        /// navigation property to game players
+        /// </summary>
+        //navigation property 
+        public ICollection<GamePlayer> GamePlayers { get; set; }
 
-        public Player Player2 { get; set; }
-
-        [Required]
-        public Guid Player2Id { get; set;
-        }
-
+        public Guid StartPlayer { get; set; }
+  
         /// <summary>
         /// winner's id
         /// </summary>
