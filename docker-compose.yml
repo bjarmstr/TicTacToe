@@ -12,6 +12,8 @@ services:
       - "34024:443"
     environment:
       - ConnectionStrings__DefaultConnection=Server=tictactoe.db;Database=dev;User Id=dev;Password=dev
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
     depends_on:
       - tictactoe.db
 

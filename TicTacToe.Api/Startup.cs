@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using TicTacToe.Repositories.Repositories;
@@ -54,7 +55,11 @@ namespace TicTacToe.Api
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TicTacToe.Api", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TicTacToe API", Version = "v1" });
+                var apiPath = Path.Combine(System.AppContext.BaseDirectory, "TicTacToe.Api.xml");
+                var modelsPath = Path.Combine(System.AppContext.BaseDirectory, "TicTacToe.Models.xml");
+               //c.IncludeXmlComments(apiPath);
+               // c.IncludeXmlComments(modelsPath);
             });
         }
 
