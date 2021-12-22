@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TicTacToe.Repositories.Repositories;
+using TicTacToe.Repositories.Repositories.Interfaces;
 
 namespace TicTacToe.Api
 {
@@ -27,6 +29,7 @@ namespace TicTacToe.Api
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddScoped<IGameRepository, GameRepository>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
