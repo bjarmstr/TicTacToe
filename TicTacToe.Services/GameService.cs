@@ -85,10 +85,7 @@ namespace TicTacToe.Services
             }
 
             //save game move and Winner(if game won) to db
-           
-
-            
-
+            var finalResult = await _gameRepository.Update(result);
 
             //TODO variables to return**
             var model = new MoveVM();

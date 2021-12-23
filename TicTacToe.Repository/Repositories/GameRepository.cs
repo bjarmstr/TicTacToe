@@ -20,7 +20,6 @@ namespace TicTacToe.Repositories.Repositories
         }
         public async Task<Game> Create(Game src)
         {
-           
             _context.Add(src);
             await _context.SaveChangesAsync();
             return src;
@@ -32,6 +31,20 @@ namespace TicTacToe.Repositories.Repositories
                 .Include(e => e.GamePlayers)
                 .FirstOrDefaultAsync(i => i.Id == id);
             if (result == null) throw new NotFoundException("The requested game could not be found");
+            return result;
+        }
+
+        public async Task<Game>Update(Game src)
+        {
+            var result = await _context.Games
+                .FirstOrDefaultAsync(i => i.Id == src.Id);
+            if (result == null) throw new NotFoundException("The requested game could not be found");
+
+            result.Gameboard = src.Gameboard;
+            result.Winner = src.Winner;
+            
+            await _context.SaveChangesAsync();
+            
             return result;
         }
 
