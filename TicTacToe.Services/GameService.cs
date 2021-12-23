@@ -24,12 +24,16 @@ namespace TicTacToe.Services
         {
             var newEntity = new Game(src);
             newEntity.CreatedDate = DateTime.UtcNow;
-            newEntity.Gameboard = new List<int>{ 0,0,3,0,0,0,0,0,0};
+
+            //Initialize the board with default Guid
+            newEntity.Gameboard = new List<int>{
+                                0,0,0,
+                                0,0,0,
+                                0,0,0};
 
             //Check players are in the system
             await _playerRepository.Verify(src.PlayerIds);
            
-            
             var result = await _gameRepository.Create(newEntity);
 
             var model = new GameVM(result);

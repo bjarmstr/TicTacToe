@@ -44,13 +44,20 @@ namespace TicTacToe.Api.Controllers
             return Ok(result);
         }
 
-        [HttpPost]
-        [Route("move")]
-        public async Task<ActionResult<MoveVM>> Move([FromBody] MoveCreateVM data)
-        {
-            var result = await _gameService.Move(data);
-            return Ok(result);
-        }
+
+        /// <summary>
+        /// place a move on a gameboard
+        /// for the player whose turn it is
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        //[HttpPost]
+        //[Route("move")]
+        //public async Task<ActionResult<MoveVM>> Move([FromBody] MoveCreateVM data)
+        //{
+        //    var result = await _gameService.Move(data);
+        //    return Ok(result);
+        //}
 
     }
 }
