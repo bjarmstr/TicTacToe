@@ -10,6 +10,7 @@ namespace TicTacToe.Services.Interfaces
     public interface IGameService
     {
         Task<GameVM> Create(GameCreateVM data);
+        Task<MoveVM> Move(MoveCreateVM data);
 
     }
 }

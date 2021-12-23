@@ -10,5 +10,6 @@ namespace TicTacToe.Repositories.Repositories.Interfaces
     public interface IGameRepository
     {
         Task<Game> Create(Game src);
+        Task<Game> Get(Guid id);
     }
 }
