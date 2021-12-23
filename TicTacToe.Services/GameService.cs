@@ -69,9 +69,25 @@ namespace TicTacToe.Services
             bool win = isWinningTurn(result.Gameboard, whoseTurn);
 
             //was that the last free square or there is a winner
-            if (!result.Gameboard.Contains(9) || win == true) gameOver = true;
+            if (!result.Gameboard.Contains(9) || win == true)
+            {
+                gameOver = true;
 
-            //send data to db
+                if (startPlayersTurn) 
+                { 
+                    result.Winner = result.StartPlayer; 
+                }
+                else
+                {
+                    var gp = result.GamePlayers.Where(gp => gp.PlayerId != result.StartPlayer).First();
+                    result.Winner = gp.PlayerId;
+                }
+            }
+
+            //save game move and Winner(if game won) to db
+           
+
+            
 
 
             //TODO variables to return**
