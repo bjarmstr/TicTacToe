@@ -22,6 +22,7 @@ namespace TicTacToe.Services
         {
             var newEntity = new Game(src);
             newEntity.CreatedDate = DateTime.UtcNow;
+            newEntity.Gameboard = new List<int>{ 0,0,3,0,0,0,0,0,0};
             var result = await _gameRepository.Create(newEntity);
 
             var model = new GameVM(result);

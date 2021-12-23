@@ -13,7 +13,7 @@ namespace TicTacToe.Models.ViewModels
         public GameVM(Entities.Game src)
         {
             Id = src.Id;
-           // PlayerIds = src.GamePlayers.Select(id => Id = id.Player.Id).ToList();
+            PlayerIds = src.GamePlayers.Select(id => id.PlayerId).ToList();
 
         }
         public Guid Id { get; set; }
