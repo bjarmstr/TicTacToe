@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TicTacToe.Models.Entities;
 using TicTacToe.Repositories.Repositories.Interfaces;
+using TicTacToe.Shared.Exceptions;
 
 namespace TicTacToe.Repositories.Repositories
 {
@@ -37,7 +38,7 @@ namespace TicTacToe.Repositories.Repositories
                 .Where(i => i.Id == src[0] || i.Id == src[1])
                 .CountAsync();
            
-            if (playerCount !=2) throw new Exception("players not found");
+            if (playerCount !=2) throw new NotFoundException("A requested player could not be found");
         }
 
     }

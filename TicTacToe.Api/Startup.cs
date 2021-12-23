@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using TicTacToe.Api.Middleware;
 using TicTacToe.Repositories.Repositories;
 using TicTacToe.Repositories.Repositories.Interfaces;
 using TicTacToe.Services;
@@ -77,6 +78,8 @@ namespace TicTacToe.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseMiddleware<GlobalExceptionHandler>();
 
             app.UseAuthorization();
 
