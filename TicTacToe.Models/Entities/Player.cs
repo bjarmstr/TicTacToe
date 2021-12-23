@@ -26,7 +26,7 @@ namespace TicTacToe.Models.Entities
         [Required]
         public DateTime CreatedDate { get; set; }
 
-        public ICollection<Game> Games { get; set; }
+        public ICollection<GamePlayer> GamePlayers { get; set; }
 
     }
 }

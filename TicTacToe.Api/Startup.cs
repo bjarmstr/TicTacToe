@@ -33,6 +33,7 @@ namespace TicTacToe.Api
         public void ConfigureDependencyInjection(IServiceCollection services)
         {
             services.AddScoped<IGameRepository, GameRepository>();
+            services.AddScoped<IGameService, GameService>();
             services.AddScoped<IPlayerRepository, PlayerRepository>();
             services.AddScoped<IPlayerService, PlayerService>();
         }

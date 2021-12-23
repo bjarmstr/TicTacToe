@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TicTacToe.Models.ViewModels;
 
 namespace TicTacToe.Models.Entities
 {
@@ -16,6 +17,13 @@ namespace TicTacToe.Models.Entities
         /// a game of tic tac toe
         /// </summary>
         public Game() { }
+
+    
+        public Game(GameCreateVM src)
+        {
+            GamePlayers = src.PlayerIds.Select(id => new GamePlayer { PlayerId = id }).ToList();
+            StartPlayer = src.StartPlayer;
+        }
 
         /// <summary>
         /// unique generated Guid identifier for each game
