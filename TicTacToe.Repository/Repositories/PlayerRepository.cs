@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,21 @@ namespace TicTacToe.Repositories.Repositories
             _context.Players.Add(src);
             await _context.SaveChangesAsync();
             return src;
+        }
+
+        /// <summary>
+        /// Verify that both players are registerd in the system
+        /// Throws exception if not registered
+        /// </summary>
+        /// <param name="src"></param>
+        /// <returns></returns>
+        public async Task Verify(List<Guid> src)
+        {
+            var playerCount = await _context.Players
+                .Where(i => i.Id == src[0] || i.Id == src[1])
+                .CountAsync();
+           
+            if (playerCount !=2) throw new Exception("players not found");
         }
 
     }

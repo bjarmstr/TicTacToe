@@ -10,5 +10,6 @@ namespace TicTacToe.Repositories.Repositories.Interfaces
     public  interface IPlayerRepository
     {
         Task<Player> Create(Player src);
+        Task Verify(List<Guid> src);
     }
 }

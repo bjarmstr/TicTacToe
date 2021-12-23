@@ -6,6 +6,9 @@ using TicTacToe.Services.Interfaces;
 
 namespace TicTacToe.Api.Controllers
 {
+    /// <summary>
+    /// Game Controller
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class GameController : ControllerBase
@@ -13,6 +16,10 @@ namespace TicTacToe.Api.Controllers
 
         private readonly IGameService _gameService;
 
+        /// <summary>
+        /// Endpoints for Game Controller
+        /// </summary>
+        /// <param name="gameService"></param>
         public GameController(IGameService gameService)
         {
             _gameService = gameService;
@@ -26,7 +33,13 @@ namespace TicTacToe.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<GameVM>> Create([FromBody] GameCreateVM data)
         {
-            //TODO verify that start player is one of the players
+            //verify that there are only 2 players
+            if (data.PlayerIds.Count != 2) return BadRequest(new { message = "2 players are required" });
+            //verify that start player is one of the players
+            if (data.StartPlayer != data.PlayerIds[0] && data.StartPlayer != data.PlayerIds[1])
+            {
+                return BadRequest(new { message = "start player must be one of game players" });
+            }
             var result = await _gameService.Create(data);
             return Ok(result);
         }
