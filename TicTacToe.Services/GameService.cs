@@ -82,6 +82,7 @@ namespace TicTacToe.Services
             {
                 gameOver = true;
 
+                //set winner's id
                 if (startPlayersTurn) 
                 { 
                     result.Winner = result.StartPlayer; 
