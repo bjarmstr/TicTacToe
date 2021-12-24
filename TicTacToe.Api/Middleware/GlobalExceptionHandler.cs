@@ -35,6 +35,10 @@ namespace TicTacToe.Api.Middleware
 
                 switch (err)
                 {
+                    case IllegalMove e:
+                        response.StatusCode = (int)HttpStatusCode.BadRequest;
+                        errorMessage = e.Message;
+                        break;
                     case NotFoundException e:
                         response.StatusCode = (int)HttpStatusCode.NotFound;
                         errorMessage = e.Message;

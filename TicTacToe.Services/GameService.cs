@@ -51,7 +51,7 @@ namespace TicTacToe.Services
             //does the game already have a winner?
             if (result.Winner != null || !result.Gameboard.Contains(9))
             {
-                throw new NotFoundException("this game has already been completed");
+                throw new IllegalMove("this game has already been completed");
             }
 
             //whose turn is it?
@@ -64,7 +64,7 @@ namespace TicTacToe.Services
             //is the square empty
             if (result.Gameboard[data.Location]!=9)
             {
-                throw new NotFoundException("invalid location for move");
+                throw new IllegalMove("invalid location for move");
             }
 
             //add turn to gameboard
@@ -123,11 +123,11 @@ namespace TicTacToe.Services
             if (game.StartPlayer == player)
             {
                 // is it their turn ?
-                if (startersTurn == false) throw new NotFoundException("Not requested players turn");
+                if (startersTurn == false) throw new IllegalMove("Not requested players turn");
                 else return 1;
             }
             //must be player2
-            if  (startersTurn == true) throw new NotFoundException("Not requested players turn");
+            if  (startersTurn == true) throw new IllegalMove("Not requested players turn");
             return 2;    
         }
 
