@@ -31,6 +31,12 @@ namespace TicTacToe.Models.Entities
         [Key]
         public Guid Id { get; set; }
 
+       /// <summary>
+       /// a list from 0-8 where game moves are stored
+       /// player1 moves are stored as 1
+       /// player2 moves are stored as 2
+       /// unplayed squares are stored as 9
+       /// </summary>
         public List<int> Gameboard { get; set; }
 
         /// <summary>
@@ -39,6 +45,9 @@ namespace TicTacToe.Models.Entities
         //navigation property 
         public ICollection<GamePlayer> GamePlayers { get; set; }
 
+        /// <summary>
+        /// Id of player selected to go first
+        /// </summary>
         public Guid StartPlayer { get; set; }
   
         /// <summary>
@@ -46,6 +55,9 @@ namespace TicTacToe.Models.Entities
         /// </summary>
         public Guid? Winner { get;set;}
 
+        /// <summary>
+        /// date Game was created on
+        /// </summary>
         [Required]
         public DateTime CreatedDate { get; set; }
 
