@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TicTacToe.Models.Entities;
 
 namespace TicTacToe.Models.ViewModels
 {
@@ -12,6 +13,28 @@ namespace TicTacToe.Models.ViewModels
     /// </summary>
     public class GameInProgressVM
     {
+
+        /// <summary>
+        /// Games in Progess
+        /// default constructor
+        /// </summary>
+        public GameInProgressVM() { }
+
+        /// <summary>
+        /// Create GameInprogressVM from Game Entity
+        /// </summary>
+        public GameInProgressVM(Guid gameId)
+        {
+            Id = gameId;
+            
+          
+        }
+
+        /// <summary>
+        /// Id of the Game
+        /// </summary>
+        public Guid Id { get; set; }
+
         /// <summary>
         /// Name of the starting player
         /// </summary>
@@ -30,7 +53,7 @@ namespace TicTacToe.Models.ViewModels
         /// <summary>
         /// Moves completed by Player2
         /// </summary>
-        public string Player2Moves { get; set; }
+        public int Player2Moves { get; set; }
 
 
     }

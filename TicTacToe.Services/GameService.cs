@@ -107,7 +107,26 @@ namespace TicTacToe.Services
         {
             var results = await _gameRepository.GetAllInProgress(pageIndex,pageSize);
 
+            //create a list to hold the VMs
             var models = new List<GameInProgressVM>();
+
+            foreach(Game game in results)
+            {
+                var model = new GameInProgressVM(game.Id);
+                
+                //Find Player1's Name
+                Guid player1 = game.StartPlayer;
+                var x = game.GamePlayers.Where(gp => gp.PlayerId == player1).FirstOrDefault();
+                model.Player1 = x.Player.Name;
+                //FindPlayer2's Name
+                var o = game.GamePlayers.Where(gp => gp.PlayerId != player1).FirstOrDefault();
+                model.Player2 = o.Player.Name;
+
+                model.Player1Moves = game.Gameboard.Count(x => x == 1);
+                model.Player2Moves = game.Gameboard.Count(o => o == 2);
+
+                models.Add(model);
+            }
 
             return models;
 
