@@ -48,6 +48,12 @@ namespace TicTacToe.Services
             //get game from db
             var result = await _gameRepository.Get(data.GameId);
 
+            //does the game already have a winner?
+            if (result.Winner != null || !result.Gameboard.Contains(9))
+            {
+                throw new NotFoundException("this game has already been completed");
+            }
+
             //whose turn is it?
             bool startPlayersTurn = isStartPlayersTurn(result.Gameboard);
 
@@ -68,8 +74,11 @@ namespace TicTacToe.Services
             //is there a winner
             bool win = isWinningTurn(result.Gameboard, whoseTurn);
 
-            //was that the last free square or there is a winner
-            if (!result.Gameboard.Contains(9) || win == true)
+            //was that the last free square
+            if (!result.Gameboard.Contains(9)) gameOver = true;
+            
+            // or there is a winner
+            if (win == true)
             {
                 gameOver = true;
 
