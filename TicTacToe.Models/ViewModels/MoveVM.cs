@@ -12,6 +12,23 @@ namespace TicTacToe.Models.ViewModels
     public class MoveVM
     {
         /// <summary>
+        /// default constructor for Move View Model
+        /// </summary>
+        public MoveVM() { }
+
+        /// <summary>
+        /// constructor to create Move View Model
+        /// </summary>
+        /// <param name="gameOver"></param>
+        /// <param name="winningTurn"></param>
+        public MoveVM(bool gameOver, bool winningTurn)
+        {
+            GameOver = gameOver;
+            WinningTurn = winningTurn;
+        }
+
+
+        /// <summary>
         /// Is the game over?
         /// true if there is a winner or a tie
         /// </summary>

@@ -87,8 +87,8 @@ namespace TicTacToe.Services
             //save game move and Winner(if game won) to db
             var finalResult = await _gameRepository.Update(result);
 
-            //TODO variables to return**
-            var model = new MoveVM();
+            var model = new MoveVM(gameOver,win);
+
             return model;
 
         }
@@ -109,12 +109,14 @@ namespace TicTacToe.Services
             {
                 throw new NotFoundException("The requested player is not found");
             }
-            //is this the start player and is it their turn?
+            //is this player1 
             if (game.StartPlayer == player)
-            {   if (startersTurn == false) throw new NotFoundException("Not requested players turn");
+            {
+                // is it their turn ?
+                if (startersTurn == false) throw new NotFoundException("Not requested players turn");
                 else return 1;
             }
-            //or it is this the other player
+            //must be player2
             if  (startersTurn == true) throw new NotFoundException("Not requested players turn");
             return 2;    
         }
