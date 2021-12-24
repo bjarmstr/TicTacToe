@@ -18,7 +18,10 @@ namespace TicTacToe.Models.Entities
         /// </summary>
         public Game() { }
 
-    
+        /// <summary>
+        /// constructor to create Game from GameCreateVM
+        /// </summary>
+        /// <param name="src"></param>
         public Game(GameCreateVM src)
         {
             GamePlayers = src.PlayerIds.Select(id => new GamePlayer { PlayerId = id }).ToList();
