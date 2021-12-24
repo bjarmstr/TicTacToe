@@ -37,7 +37,7 @@ namespace TicTacToe.Repositories.Repositories
         public async Task<List<Game>>GetAllInProgress(int pageIndex, int pageSize)
         {
             var result = await _context.Games
-              .Where(game => game.Gameboard.Contains(9))
+              .Where(game => game.Gameboard.Contains(9) && game.Winner == null)
               .Include(game => game.GamePlayers).ThenInclude(gp => gp.Player)
               .OrderBy(game => game.CreatedDate)
               .Skip((pageIndex - 1) * pageSize)
