@@ -103,6 +103,16 @@ namespace TicTacToe.Services
 
         }
 
+        public async Task<List<GameInProgressVM>> GetAllInProgress(int pageIndex, int pageSize)
+        {
+            var results = await _gameRepository.GetAllInProgress(pageIndex,pageSize);
+
+            var models = new List<GameInProgressVM>();
+
+            return models;
+
+        }
+
         private bool isStartPlayersTurn(List<int> gameboard)
         {
             //count how many turns each player has had

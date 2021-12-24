@@ -34,6 +34,20 @@ namespace TicTacToe.Repositories.Repositories
             return result;
         }
 
+        public async Task<List<Game>>GetAllInProgress(int pageIndex, int pageSize)
+        {
+            var result = await _context.Games
+              .Where(game => game.Gameboard.Contains(9))
+              .Include(game => game.GamePlayers).ThenInclude(gp => gp.Player)
+              .OrderBy(game => game.CreatedDate)
+              .Skip((pageIndex - 1) * pageSize)
+              .Take(pageSize)
+              .ToListAsync();
+
+            return result;
+
+        }
+
         public async Task<Game>Update(Game src)
         {
             var result = await _context.Games

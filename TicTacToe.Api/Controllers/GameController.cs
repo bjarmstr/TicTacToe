@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TicTacToe.Models.ViewModels;
 using TicTacToe.Services.Interfaces;
@@ -56,6 +57,21 @@ namespace TicTacToe.Api.Controllers
         public async Task<ActionResult<MoveVM>> Move([FromBody] MoveCreateVM data)
         {
             var result = await _gameService.Move(data);
+            return Ok(result);
+        }
+
+
+        /// <summary>
+        /// Current Games in progress
+        /// moves registered and players
+        /// pageIndex-start with pageIndex=1
+        /// pageSize-how many users to display on a page
+        /// </summary>
+        [HttpGet]
+        [Route("inprogress")]
+        public async Task<ActionResult<List<GameInProgressVM>>> GetAllInProgress([FromQuery] int pageIndex, int pageSize)
+        {
+            var result = await _gameService.GetAllInProgress(pageIndex, pageSize);
             return Ok(result);
         }
 

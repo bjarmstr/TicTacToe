@@ -11,6 +11,6 @@ namespace TicTacToe.Services.Interfaces
     {
         Task<GameVM> Create(GameCreateVM data);
         Task<MoveVM> Move(MoveCreateVM data);
-
+        Task<List<GameInProgressVM>> GetAllInProgress(int pageIndex, int pageSize);
     }
 }

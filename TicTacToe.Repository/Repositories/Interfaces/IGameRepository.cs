@@ -12,5 +12,6 @@ namespace TicTacToe.Repositories.Repositories.Interfaces
         Task<Game> Create(Game src);
         Task<Game> Get(Guid id);
         Task<Game> Update(Game src);
+        Task<List<Game>> GetAllInProgress(int pageIndex, int pageSize);
     }
 }
