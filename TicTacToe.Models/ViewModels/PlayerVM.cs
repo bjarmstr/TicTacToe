@@ -24,8 +24,8 @@ namespace TicTacToe.Models.ViewModels
         {
             Id = src.Id;
             Name = src.Name;
-
         }
+
         /// <summary>
         /// Unique Identifier for Player
         /// </summary>

@@ -10,8 +10,16 @@ using TicTacToe.Repositories.Repositories;
 
 namespace TicTacToe.Api
 {
+    /// <summary>
+    /// Application's main program
+    /// </summary>
     public class Program
     {
+
+        /// <summary>
+        /// Main method of program
+        /// </summary>
+        /// <param name="args"></param>
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
@@ -41,7 +49,9 @@ namespace TicTacToe.Api
             host.Run();
 
         }
-
+        /// <summary>
+        /// Web Host Builder
+        /// </summary>
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>

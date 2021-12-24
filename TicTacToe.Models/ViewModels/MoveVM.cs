@@ -27,7 +27,6 @@ namespace TicTacToe.Models.ViewModels
             WinningTurn = winningTurn;
         }
 
-
         /// <summary>
         /// Is the game over?
         /// true if there is a winner or a tie

@@ -6,13 +6,30 @@ using System.Threading.Tasks;
 
 namespace TicTacToe.Models.Entities
 {
+
+    /// <summary>
+    /// Join table for Games and Players
+    /// </summary>
     public class GamePlayer
     {
+        /// <summary>
+        /// Game Id
+        /// </summary>
         public Guid GameId { get; set; }
+        
+        /// <summary>
+        ///Player Id 
+        /// </summary>
         public Guid PlayerId { get; set; }
 
-        //navigation properties
+        /// <summary>
+        /// navigation property for player
+        /// </summary>
         public Player Player { get; set; }
+        
+        /// <summary>
+        /// navigation property for game 
+        /// </summary>
         public Game Game { get; set; }
 
 

@@ -21,16 +21,25 @@ using TicTacToe.Services.Interfaces;
 
 namespace TicTacToe.Api
 {
+    /// <summary>
+    /// Startup
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// Startup
+        /// </summary>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        /// <summary>
+        /// Configuration for startup
+        /// </summary>
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureDependencyInjection(IServiceCollection services)
         {
             services.AddScoped<IGameRepository, GameRepository>();
@@ -39,6 +48,9 @@ namespace TicTacToe.Api
             services.AddScoped<IPlayerService, PlayerService>();
         }
 
+        /// <summary>
+        /// Configure Services
+        /// </summary>
             public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -65,7 +77,7 @@ namespace TicTacToe.Api
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

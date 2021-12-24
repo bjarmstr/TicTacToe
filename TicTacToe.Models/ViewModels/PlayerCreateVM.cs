@@ -11,11 +11,10 @@ namespace TicTacToe.Models.ViewModels
     /// </summary>
     public class PlayerCreateVM
     {
-        /// <summary>
-        /// Player Name 
-        /// </summary>
+       /// <summary>
+       /// Player Name 
+       /// </summary>
        public string Name { get; set; }
-
 
     }
 }
